@@ -1,0 +1,6 @@
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+hadoop com.sun.tools.javac.Main Recipe.java
+jar cf Recipe.jar *.class
+hadoop fs -mkdir /in
+hadoop fs -copyFromLocal ./recipeitems-latest.json /in
+hadoop jar ./Recipe.jar Recipe /in /out
